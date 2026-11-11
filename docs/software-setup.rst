@@ -118,7 +118,7 @@ The image is also available from GitHub Container Registry:
 
 .. code-block:: shell-session
 
-   $ docker pull ghcr.io/amd989/mariner
+   $ docker pull ghcr.io/mariner3d/mariner
 
 .. note::
    When using Docker, you still need to configure the USB Gadget and serial
