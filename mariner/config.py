@@ -8,7 +8,7 @@ import toml
 def __get_config_filename() -> Optional[str]:
     potential_paths: Sequence[Path] = [
         Path("config.toml"),
-        Path("~/.mariner/config.toml"),
+        Path("~/.mariner/config.toml").expanduser(),
         Path("/etc/mariner/config.toml"),
     ]
     try:

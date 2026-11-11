@@ -32,6 +32,21 @@ files_directory = "/var/mariner"
         )
         expect(config.get_files_directory()).to_equal(Path("/var/mariner"))
 
+    def test_reads_config_from_home_directory(self) -> None:
+        self.fs.create_file(
+            Path("~/.mariner/config.toml").expanduser(),
+            contents="""
+files_directory = "/home/mariner/files"
+            """,
+        )
+        self.fs.create_file(
+            "/etc/mariner/config.toml",
+            contents="""
+files_directory = "/var/mariner"
+            """,
+        )
+        expect(config.get_files_directory()).to_equal(Path("/home/mariner/files"))
+
     def test_can_customize_printer_settings(self) -> None:
         self.fs.create_file(
             "/etc/mariner/config.toml",
