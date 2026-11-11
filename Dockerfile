@@ -31,6 +31,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 COPY --from=python-builder /build/.venv /opt/venvs/mariner3d
 COPY --from=frontend-builder /build/frontend/dist /opt/venvs/mariner3d/dist
 COPY config.toml /etc/mariner/config.toml
+COPY LICENSE.txt /usr/share/doc/mariner3d/LICENSE.txt
 
 ENV PATH="/opt/venvs/mariner3d/bin:${PATH}"
 

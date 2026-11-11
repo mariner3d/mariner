@@ -87,6 +87,10 @@ install -D -m 0755 /build/dist/scripts/gadget-stop \
 install -D -m 0644 /build/config.toml \
     %{buildroot}%{_sysconfdir}/mariner/config.toml
 
+# The MIT license requires the copyright notice to ship with every copy
+install -D -m 0644 /build/LICENSE.txt \
+    %{buildroot}%{_licensedir}/%{name}/LICENSE.txt
+
 # Create /usr/bin symlink
 install -d %{buildroot}%{_bindir}
 ln -sf /opt/venvs/mariner3d/bin/mariner %{buildroot}%{_bindir}/mariner
@@ -121,6 +125,7 @@ usermod -aG dialout mariner 2>/dev/null || true
 %{_unitdir}/mariner-usb-gadget.service
 %dir %{_sysconfdir}/mariner
 %config(noreplace) %{_sysconfdir}/mariner/config.toml
+%license %{_licensedir}/%{name}/LICENSE.txt
 
 %changelog
 * Thu Aug 03 2023 Alejandro Mora <mail@alejandro.md> - 0.3.1-1
