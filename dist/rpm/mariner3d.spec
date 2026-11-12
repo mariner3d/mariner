@@ -34,7 +34,7 @@ Requires:       python3.12
 Requires:       libxml2
 Requires:       libxslt
 Requires:       zlib
-Recommends:     alejandro-md-release
+Requires:       alejandro-md-release
 
 %description
 Mariner 2 is a web interface for remotely controlling MSLA resin 3D printers
@@ -111,7 +111,7 @@ usermod -aG dialout mariner 2>/dev/null || true
 
 %postun
 %systemd_postun_with_restart mariner3d.service
-%systemd_postun_with_restart mariner-usb-gadget.service
+%systemd_postun mariner-usb-gadget.service
 
 %files
 %dir /opt/venvs/mariner3d

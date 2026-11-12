@@ -10,9 +10,13 @@ DEB_DEBIAN_DIR=$(dir $(firstword $(MAKEFILE_LIST)))
 DEB_UPSTREAM_VERSION=$(shell dpkg-parsechangelog -l$(DEB_DEBIAN_DIR)/changelog \
                                | sed -rne 's,^Version: ([^+-]+).*,\1,p')
 
+# The USB gadget is the drive the printer reads from. --no-start keeps
+# dpkg from starting it before the user has set it up, and
+# --no-stop-on-upgrade keeps an upgrade from stopping it, which would pull
+# the drive out from under the printer, mid-print included, until reboot.
 override_dh_installsystemd:
 	dh_installsystemd
-	dh_installsystemd --name mariner-usb-gadget --no-start
+	dh_installsystemd --name mariner-usb-gadget --no-start --no-stop-on-upgrade
 
 override_dh_fixperms:
 	dh_fixperms
