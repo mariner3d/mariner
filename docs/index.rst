@@ -33,6 +33,7 @@ Mariner 2 provides the following features:
    supported-printers
    install
    network-printing
+   sdcp-clients
    troubleshooting
    contributing
 

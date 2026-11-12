@@ -108,6 +108,9 @@ There is nothing to configure in the client: it finds the printer by
 broadcasting on the local network. Slice, then use the client's send-to-printer
 flow and pick the printer by name.
 
+:ref:`Printing over SDCP` walks through that flow in ChiTuBox, Lychee Slicer
+and DragonFruit Slicer, with screenshots of each step.
+
 What it provides
 ^^^^^^^^^^^^^^^^
 
